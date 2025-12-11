@@ -1,0 +1,13 @@
+<div role="alert" class="alert" [ngClass]="[variant(), customClass()]">
+  @if (titleContent()) {
+    <div class="alertHeader">
+      <ng-content select="[alertTitle]" />
+    </div>
+  }
+
+  @if (bodyContent()) {
+    <div class="alertBody">
+      <ng-content select="[alertBody]" />
+    </div>
+  }
+</div>

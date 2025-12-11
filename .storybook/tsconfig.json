@@ -1,0 +1,17 @@
+{
+  "extends": "../projects/components/tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "../projects/components/src/test.ts", 
+    "../projects/components/src/**/*.spec.ts"
+  ],
+  "include": [
+    "../projects/components/src/**/*.stories.*", 
+    "./preview.ts"
+  ],
+  "files": ["./typings.d.ts"]
+}

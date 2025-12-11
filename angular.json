@@ -6,5 +6,59 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "components": {
+      "projectType": "library",
+      "root": "projects/components",
+      "sourceRoot": "projects/components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/components/tsconfig.spec.json"
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "components:build",
+            "compodoc": true,
+            "compodocArgs": ["-e", "json", "-d", "projects/components"],
+            "port": 6007,
+            "styles": ["projects/components/src/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/components/src/styles"]
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "components:build",
+            "compodoc": true,
+            "compodocArgs": ["-e", "json", "-d", "projects/components"],
+            "outputDir": "storybook-static",
+            "styles": ["projects/components/src/styles/main.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/components/src/styles"]
+            }
+          }
+        }
+      }
+    }
   }
 }
